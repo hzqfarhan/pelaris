@@ -54,14 +54,26 @@ export default async function OnboardingPage({
 
                     <div className="space-y-2">
                         <label className="text-sm font-medium leading-none" htmlFor="niche">Business Niche / Industry</label>
-                        <input
+                        <select
                             id="niche"
                             name="niche"
-                            type="text"
-                            placeholder="e.g. F&B, Fashion, Dropship"
-                            className="flex h-10 w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                            className="flex h-10 w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                             required
-                        />
+                            defaultValue=""
+                        >
+                            <option value="" disabled hidden>Select your industry...</option>
+                            <option value="Food & Beverage (F&B)">Food & Beverage (F&B)</option>
+                            <option value="Fashion & Apparel">Fashion & Apparel</option>
+                            <option value="Health & Beauty">Health & Beauty</option>
+                            <option value="Dropship / Affiliate">Dropship / Affiliate</option>
+                            <option value="Retail & E-commerce">Retail & E-commerce</option>
+                            <option value="Services & Agency">Services & Agency</option>
+                            <option value="Education & Coaching">Education & Coaching</option>
+                            <option value="Tech & Electronics">Tech & Electronics</option>
+                            <option value="Home & Living">Home & Living</option>
+                            <option value="Automotive">Automotive</option>
+                            <option value="Other">Other</option>
+                        </select>
                     </div>
 
                     <div className="space-y-3">
