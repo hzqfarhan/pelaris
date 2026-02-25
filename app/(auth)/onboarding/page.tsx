@@ -79,19 +79,19 @@ export default async function OnboardingPage({
                     <div className="space-y-3">
                         <label className="text-sm font-medium leading-none">Primary Goal for using Pelaris Digital</label>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                            <label className="border border-border rounded-xl p-4 cursor-pointer hover:border-primary transition-colors flex flex-col items-center text-center gap-2">
+                            <label className="border border-border rounded-xl p-4 cursor-pointer hover:border-primary transition-colors flex flex-col items-center text-center gap-2 has-[:checked]:border-primary has-[:checked]:bg-primary/5">
                                 <input type="radio" name="primaryGoal" value="Sales" className="sr-only peer" required />
                                 <div className="text-2xl">💰</div>
                                 <div className="font-medium text-sm peer-checked:text-primary">Drive Sales</div>
                             </label>
 
-                            <label className="border border-border rounded-xl p-4 cursor-pointer hover:border-primary transition-colors flex flex-col items-center text-center gap-2">
+                            <label className="border border-border rounded-xl p-4 cursor-pointer hover:border-primary transition-colors flex flex-col items-center text-center gap-2 has-[:checked]:border-primary has-[:checked]:bg-primary/5">
                                 <input type="radio" name="primaryGoal" value="Brand Awareness" className="sr-only peer" />
                                 <div className="text-2xl">📣</div>
                                 <div className="font-medium text-sm peer-checked:text-primary">Brand Awareness</div>
                             </label>
 
-                            <label className="border border-border rounded-xl p-4 cursor-pointer hover:border-primary transition-colors flex flex-col items-center text-center gap-2">
+                            <label className="border border-border rounded-xl p-4 cursor-pointer hover:border-primary transition-colors flex flex-col items-center text-center gap-2 has-[:checked]:border-primary has-[:checked]:bg-primary/5">
                                 <input type="radio" name="primaryGoal" value="Follower Growth" className="sr-only peer" />
                                 <div className="text-2xl">📈</div>
                                 <div className="font-medium text-sm peer-checked:text-primary">Follower Growth</div>
