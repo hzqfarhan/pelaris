@@ -21,6 +21,25 @@ export async function loginWithEmail(formData: FormData) {
     redirect("/dashboard");
 }
 
+export async function loginWithGoogle() {
+    "use server";
+    const supabase = createClient();
+    const { data, error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+            redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/auth/callback`,
+        },
+    });
+
+    if (error) {
+        redirect("/login?error=" + encodeURIComponent(error.message));
+    }
+
+    if (data.url) {
+        redirect(data.url);
+    }
+}
+
 export async function signupWithEmail(formData: FormData) {
     "use server";
     const email = formData.get("email") as string;
