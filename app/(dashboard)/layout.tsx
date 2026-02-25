@@ -16,14 +16,18 @@ export default async function DashboardLayout({
     }
 
     // Ensure they have a profile
-    const { data: profile } = await supabase
+    const { data: profile, error } = await supabase
         .from("business_profile")
         .select("*")
         .eq("user_id", user.id)
-        .single();
+        .maybeSingle();
+
+    if (error) {
+        redirect("/onboarding?error=" + encodeURIComponent("DB Error: " + error.message));
+    }
 
     if (!profile) {
-        redirect("/onboarding");
+        redirect("/onboarding?error=" + encodeURIComponent("Profile saved, but could not be read. Please disable RLS for the business_profile table in Supabase."));
     }
 
     return (
