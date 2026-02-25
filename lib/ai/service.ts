@@ -1,6 +1,8 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import OpenAI from 'openai';
 
 const ai = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 const model = 'gemini-1.5-flash';
 
 // Base prompt strategy for context injection
@@ -161,4 +163,31 @@ export const analyzePerformance = async (data: any) => {
     const response = await genModel.generateContent(prompt);
 
     return response.response.text();
+}
+
+export const generateImage = async ({
+    promptText,
+    size = "1024x1024"
+}: {
+    promptText: string;
+    size?: "256x256" | "512x512" | "1024x1024";
+}) => {
+    try {
+        const response = await openai.images.generate({
+            model: "dall-e-3",
+            prompt: promptText,
+            n: 1,
+            size,
+            quality: "standard",
+        });
+
+        if (!response.data || !response.data[0] || !response.data[0].url) {
+            throw new Error("No image URL returned from OpenAI");
+        }
+
+        return response.data[0].url;
+    } catch (error: any) {
+        console.error("OpenAI Image Generation Error:", error?.response?.data || error.message);
+        throw error;
+    }
 }
